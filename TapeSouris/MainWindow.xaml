@@ -10,8 +10,8 @@
         <Image Source="/images/sol.jpg" Stretch="Fill"/>
         <TextBox TextWrapping="Wrap" Text="Bienvenu a souris land !" FontSize="40" TextAlignment="Center" BorderThickness="0,0,0,0" VerticalAlignment="Center" Foreground="White" Background="Transparent" Margin="185,0,185,250" IsReadOnly="True"/>
         <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="Reusiser a attrpaer toutes les souris" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="328" FontSize="20" BorderThickness="0,0,0,0" Margin="0,0,0,80" IsReadOnly="True"/>
-        <Menu Width="100" Height="50" Grid.Row="0" Margin="350,286,350,98">
-            <MenuItem Header="Jouer" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="100" Height="50" BorderThickness="0,0,0,0" Margin="0,150,0,0"/>
+        <Menu Width="100" Height="50" Grid.Row="0" Margin="350,286,350,98" Background="Transparent">
+            <MenuItem Header="Jouer" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="100" Height="50" BorderThickness="0,0,0,0" Margin="0,0,0,0"/>
         </Menu>
     </Grid>
 </Window>

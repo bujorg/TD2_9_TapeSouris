@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TapeSouris"
         mc:Ignorable="d"
-        Title="Jeu" Height="450" Width="800">
+        Title="Jeu" Height="450" Width="800" WindowState="Maximized" Icon="/images/souris.png">
     <Grid>
-        <Button Name="Souris1" Click="btnSouris1"/>
+        <Button Name="Souris1" Click="btnSouris1" Margin="40,75,610,309" Height="50" Width="150"/>
+        <Button Name="Souris2" Click="btnSouris2" Margin="230,75,420,309" Height="50" Width="150"/>
+        <Button Name="Souris3" Click="btnSouris3" Margin="420,75,230,309" Height="50" Width="150"/>
+        <Button Name="Souris4" Click="btnSouris4" Margin="610,75,40,309" Height="50" Width="150"/>
+        <Button Name="Souris5" Click="btnSouris5" Margin="88,200,562,184" Height="50" Width="150"/>
+        <Button Name="Souris6" Click="btnSouris6" Margin="325,200,325,184" Height="50" Width="150"/>
+        <Button Name="Souris7" Click="btnSouris7" Margin="562,200,88,184" Height="50" Width="150"/>
+        <Button Name="Souris8" Click="btnSouris8" Margin="40,325,610,75" Height="50" Width="150"/>
+        <Button Name="Souris9" Click="btnSouris9" Margin="230,325,420,75" Height="50" Width="150"/>
+        <Button Name="Souris10" Click="btnSouris10" Margin="420,325,230,75" Height="50" Width="150"/>
+        <Button Name="Souris11" Click="btnSouris11" Margin="610,325,40,75" Height="50" Width="150"/>
     </Grid>
 </Window>

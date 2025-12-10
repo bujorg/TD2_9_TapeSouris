@@ -25,6 +25,50 @@ namespace TapeSouris
         }
         private async void btnSouris1(object sender, RoutedEventArgs e)
         {
+            apparition();
+        }
+        private async void btnSouris2(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris3(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris4(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris5(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris6(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris7(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris8(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris9(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris10(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void btnSouris11(object sender, RoutedEventArgs e)
+        {
+            apparition();
+        }
+        private async void apparition()
+        {
             Random apparition = new Random();
             int attenteApparition = apparition.Next(1000, 5000);
             Souris1.IsEnabled = false;
