@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TapeSouris
+namespace SelectionNiveau
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,18 +19,6 @@ namespace TapeSouris
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            SelectionNiveaux choixNiveau = new SelectionNiveaux();
-            bool? rep = choixNiveau.ShowDialog();
-            if (rep == true)
-            {
-                Jeu jeuFenetre = new Jeu();
-                jeuFenetre.Show();
-                this.Hide();
-            }
         }
     }
 }
