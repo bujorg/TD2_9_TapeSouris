@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TapeSouris"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowState="Maximized">
+        Title="MenuRegle" Height="450" Width="800" ResizeMode="NoResize" WindowState="Maximized">
     <Grid>
         <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,97,0,0" TextWrapping="Wrap" Text="Bienvenu a souris land !"  Width="510" FontSize="40" TextAlignment="Center"/>
         <TextBox HorizontalAlignment="Center" Margin="0,188,0,0" TextWrapping="Wrap" Text="Reusiser a attrpaer toutes les souris" VerticalAlignment="Top" Width="328" FontSize="20"/>
-        <Button Content="Jouer" HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
-
-
+        <Menu Width="100" Height="50" Grid.Row="0" Margin="350,286,350,98">
+            <MenuItem Header="Jouer" Click="MenuItem_Click" Width="100" Height="50"/>
+        </Menu>
     </Grid>
 </Window>
