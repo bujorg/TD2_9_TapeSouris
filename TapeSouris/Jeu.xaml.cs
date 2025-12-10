@@ -19,61 +19,72 @@ namespace TapeSouris
     /// </summary>
     public partial class Jeu : Window
     {
+        Random apparais = new Random();
         public Jeu()
         {
             InitializeComponent();
+            Demarrage();
         }
-        private async void btnSouris1(object sender, RoutedEventArgs e)
+        /*private async void apparition(Button clickedButton)
         {
-            apparition();
-        }
-        private async void btnSouris2(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris3(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris4(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris5(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris6(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris7(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris8(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris9(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris10(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void btnSouris11(object sender, RoutedEventArgs e)
-        {
-            apparition();
-        }
-        private async void apparition()
-        {
-            Random apparition = new Random();
-            int attenteApparition = apparition.Next(1000, 5000);
-            Souris1.IsEnabled = false;
+            
+            int attenteApparition = apparais.Next(1000, 5000);
+            clickedButton.IsEnabled = false;
             await Task.Delay(attenteApparition);
-            Souris1.IsEnabled = true;
+            clickedButton.IsEnabled = true;
+        }*/
+       private async void btnSouris_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).IsEnabled = false;
         }
+        /*private async void demarage()
+        {
+            foreach (var btn in MainGrid.Children.OfType<Button>())
+            {
+                btn.IsEnabled = false;      
+            }
+            await Task.Delay(1000);
+            foreach (var btn in MainGrid.Children.OfType<Button>())
+            {
+                btn.IsEnabled = true;
+                await Task.Delay(apparais.Next(800, 2000)); // Temps d'apparition
+                btn.IsEnabled = false;
+                await Task.Delay(apparais.Next(500, 1500)); // Pause
+            }
+        }*/
+        private async void Demarrage()
+        {
+            var buttons = MainGrid.Children.OfType<Button>().ToList();
+
+            // Désactiver tous les boutons
+            foreach (var btn in buttons)
+                btn.IsEnabled = false;
+
+            await Task.Delay(1000);
+
+            // Boucle infinie pour réactiver aléatoirement les boutons
+            while (true)
+            {
+                // Choisir un bouton aléatoire
+                var btn = buttons[apparais.Next(buttons.Count)];
+
+                // Si le bouton est déjà actif, sauter
+                if (!btn.IsEnabled)
+                {
+                    btn.IsEnabled = true;
+
+                    // Le garder actif pendant un temps aléatoire
+                    int activeTime = apparais.Next(800, 2000);
+                    await Task.Delay(activeTime);
+
+                    // Désactiver à nouveau
+                    btn.IsEnabled = false;
+                }
+
+                // Pause aléatoire avant de réactiver un autre bouton
+                await Task.Delay(apparais.Next(300, 1000));
+            }
+        }
+
     }
 }
