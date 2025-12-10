@@ -8,10 +8,27 @@
         Title="MainWindow" Height="450" Width="800" WindowState="Maximized" Icon="/images/souris.png" ResizeMode="CanResizeWithGrip">
     <Grid>
         <Image Source="/images/sol.jpg" Stretch="Fill"/>
-        <TextBox TextWrapping="Wrap" Text="Bienvenu a souris land !" FontSize="40" TextAlignment="Center" BorderThickness="0,0,0,0" VerticalAlignment="Center" Foreground="White" Background="Transparent" Margin="185,0,185,250" IsReadOnly="True"/>
-        <TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="Reusiser a attrpaer toutes les souris" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="328" FontSize="20" BorderThickness="0,0,0,0" Margin="0,0,0,80" IsReadOnly="True"/>
-        <Menu Width="100" Height="50" Grid.Row="0" Margin="350,286,350,98" Background="Transparent">
-            <MenuItem Header="Jouer" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="100" Height="50" BorderThickness="0,0,0,0" Margin="0,0,0,0"/>
+        <TextBlock Text="Bienvenue à Souris Land !" FontSize="55" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gold" Background="Transparent" Margin="0,0,0,300" FontFamily="Matura MT Script Capitals">
+            <TextBlock.Effect>
+                <DropShadowEffect Color="Black"
+                                  Direction="320"
+                                  ShadowDepth="8"
+                                  BlurRadius="8"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBlock Text="Objectif: Reussir a attraper toutes les souris" FontSize="25" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gold" Background="Transparent" FontFamily="Kristen ITC">
+            <TextBlock.Effect>
+                <DropShadowEffect Color="Black"
+                                  Direction="320"
+                                  ShadowDepth="5"
+                                  BlurRadius="8"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <Image Margin="350,286,350,98" Width="100" Height="50" Source="/images/bouton_play.png" Panel.ZIndex="1"/>
+        <Menu Width="100" Height="50" Grid.Row="0" Margin="350,286,350,98" Background="Transparent" Panel.ZIndex="1">
+            <MenuItem Header="" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="100" Height="50" FontSize="35" BorderThickness="0,0,0,0" Margin="0,0,0,0"/>
         </Menu>
+
+
     </Grid>
 </Window>
