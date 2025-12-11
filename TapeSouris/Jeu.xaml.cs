@@ -48,9 +48,14 @@ namespace TapeSouris
             var buttons = MainGrid.Children.OfType<Button>().ToList();
             //Pour chaque bouton
             foreach (var btn in buttons)
+            {
+                btn.Visibility = Visibility.Collapsed;
                 //Désactive les boutons
                 btn.IsEnabled = false;
+            }
+
             //Fait une pause
+
             await Task.Delay(1000);
             //Boucle d'apparition des boutons
 
@@ -63,8 +68,8 @@ namespace TapeSouris
                 //Verifie si le bouton est pas déjà actif (si le niveau en fait apparaitre plusieurs a la fois)
                 if (!btn.IsEnabled)
                 {
-                    //Active le bouton
                     btn.IsEnabled = true;
+                    //Active le bouton
                     //Tant que le bouton n'est pas cliqué fait le temps d'attente
                     try
                     {
@@ -97,7 +102,20 @@ namespace TapeSouris
             txtScore.Text = $"Score : {score}";
         }
 
+                    // Le garder actif pendant un temps aléatoire
+                    {
+                        Source = new BitmapImage(new Uri("pack://application:,,,/images/souris.png")),
+                        Stretch = Stretch.Uniform,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    btn.Content = sourisImage;
 
+                    // Le garder actif pendant un temps aléatoire
+                    int activeTime = apparais.Next(800, 2000);
+                    await Task.Delay(activeTime);
+
+                    // Désactiver à nouveau
         //Permet de faire défiler le temps dans le jeu
         private void InitializeTimer()
         {
@@ -114,7 +132,6 @@ namespace TapeSouris
         {
             tempsRestant--;
             txtTimer.Text = $"Temps : {tempsRestant}";
-
             if (tempsRestant <= 0)
             {
                 minuterie.Stop();
