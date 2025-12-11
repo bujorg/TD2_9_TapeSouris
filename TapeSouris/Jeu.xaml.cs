@@ -58,7 +58,11 @@ namespace TapeSouris
 
             // Désactiver tous les boutons
             foreach (var btn in buttons)
+            {
+                btn.Visibility = Visibility.Collapsed;
                 btn.IsEnabled = false;
+            }
+
 
             await Task.Delay(1000);
 
@@ -71,14 +75,26 @@ namespace TapeSouris
                 // Si le bouton est déjà actif, sauter
                 if (!btn.IsEnabled)
                 {
+                    btn.Visibility = Visibility.Visible;
                     btn.IsEnabled = true;
+
+                    var sourisImage = new Image
+                    {
+                        Source = new BitmapImage(new Uri("pack://application:,,,/images/souris.png")),
+                        Stretch = Stretch.Uniform,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    btn.Content = sourisImage;
 
                     // Le garder actif pendant un temps aléatoire
                     int activeTime = apparais.Next(800, 2000);
                     await Task.Delay(activeTime);
 
                     // Désactiver à nouveau
+                    btn.Visibility = Visibility.Collapsed;
                     btn.IsEnabled = false;
+                    btn.Content = null;
                 }
 
                 // Pause aléatoire avant de réactiver un autre bouton

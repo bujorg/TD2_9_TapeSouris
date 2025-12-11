@@ -7,16 +7,29 @@
         mc:Ignorable="d"
         Title="Jeu" Height="450" Width="800" WindowState="Maximized" Icon="/images/souris.png">
     <Grid x:Name="MainGrid">
-        <Button Name="Souris1" Click="btnSouris_Click" Margin="40,75,610,309" Height="50" Width="150"/>
-        <Button Name="Souris2" Click="btnSouris_Click" Margin="230,75,420,309" Height="50" Width="150"/>
-        <Button Name="Souris3" Click="btnSouris_Click" Margin="420,75,230,309" Height="50" Width="150"/>
-        <Button Name="Souris4" Click="btnSouris_Click" Margin="610,75,40,309" Height="50" Width="150"/>
-        <Button Name="Souris5" Click="btnSouris_Click" Margin="88,200,562,184" Height="50" Width="150"/>
-        <Button Name="Souris6" Click="btnSouris_Click" Margin="325,200,325,184" Height="50" Width="150"/>
-        <Button Name="Souris7" Click="btnSouris_Click" Margin="562,200,88,184" Height="50" Width="150"/>
-        <Button Name="Souris8" Click="btnSouris_Click" Margin="40,325,610,75" Height="50" Width="150"/>
-        <Button Name="Souris9" Click="btnSouris_Click" Margin="230,325,420,75" Height="50" Width="150"/>
-        <Button Name="Souris10" Click="btnSouris_Click" Margin="420,325,230,75" Height="50" Width="150"/>
-        <Button Name="Souris11" Click="btnSouris_Click" Margin="610,325,40,75" Height="50" Width="150"/>
+        <Image Source="/images/sol.jpg" Stretch="Fill"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="40,75,610,309" Height="50" Width="150"/>
+        <Button Name="Souris1" Click="btnSouris_Click" Margin="40,75,610,309" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0" />
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="230,75,420,309" Height="50" Width="150"/>
+        <Button Name="Souris2" Click="btnSouris_Click" Margin="230,75,420,309" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0" />
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="420,75,230,309" Height="50" Width="150"/>
+        <Button Name="Souris3" Click="btnSouris_Click" Margin="420,75,230,309" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="610,75,40,309" Height="50" Width="150"/>
+        <Button Name="Souris4" Click="btnSouris_Click" Margin="610,75,40,309" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="88,200,562,184" Height="50" Width="150"/>
+        <Button Name="Souris5" Click="btnSouris_Click" Margin="88,200,562,184" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="325,200,325,184" Height="50" Width="150"/>
+        <Button Name="Souris6" Click="btnSouris_Click" Margin="325,200,325,184" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="562,200,88,184" Height="50" Width="150"/>
+        <Button Name="Souris7" Click="btnSouris_Click" Margin="562,200,88,184" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="40,325,610,75" Height="50" Width="150"/>
+        <Button Name="Souris8" Click="btnSouris_Click" Margin="40,325,610,75" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="230,325,420,75" Height="50" Width="150"/>
+        <Button Name="Souris9" Click="btnSouris_Click" Margin="230,325,420,75" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="420,325,230,75" Height="50" Width="150"/>
+        <Button Name="Souris10" Click="btnSouris_Click" Margin="420,325,230,75" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        <Image Source="/images/trou.png" Stretch="Fill" Margin="610,325,40,75" Height="50" Width="150"/>
+        <Button Name="Souris11" Click="btnSouris_Click" Margin="610,325,40,75" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
+        
     </Grid>
 </Window>
