@@ -31,6 +31,7 @@ namespace TapeSouris
         //Créer un timer du nom de minuterie
         private DispatcherTimer minuterie;
         private bool jeuEnCours = true;
+        private bool estEnPause = false;
 
 
         //Permet de lancer les methodes lorsque la fenetre est ouverte
@@ -40,6 +41,7 @@ namespace TapeSouris
             Demarrage();
             InitializeTimer();
             var fenetreNiveaux = new SelectionNiveaux();
+            this.PreviewKeyDown += Jeu_PreviewKeyDown;
         }
 
 
@@ -63,6 +65,11 @@ namespace TapeSouris
 
             while (jeuEnCours == true)
             {
+                if (estEnPause)
+                {
+                    await Task.Delay(100); // Attend que la pause soit levée
+                    continue;
+                }
                 //Création du jeton a chaque boucle
                 cts = new CancellationTokenSource();
                 //Chosi un bouton aléatoire
@@ -106,13 +113,10 @@ namespace TapeSouris
         //Pour detecter un bouton cliqué et faire des modification en conséquence
         private async void btnSouris_Click(object sender, RoutedEventArgs e)
         {
-            //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
-            cts.Cancel();
+
             //Désactive le bouton cliqué
             var btn = (Button)sender;
-            btn.IsEnabled = false;
-            btn.Content = null;                  // ❗ Retire l'image
-            btn.Visibility = Visibility.Collapsed;  // Masquer si tu veux
+
             var toucheImage = new Image
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie.png")),
@@ -129,6 +133,11 @@ namespace TapeSouris
 
             // Retirer l'image
             btn.Content = null;
+            //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
+            cts.Cancel();
+            btn.IsEnabled = false;
+            btn.Content = null;                  // ❗ Retire l'image
+            btn.Visibility = Visibility.Collapsed;  // Masquer si tu veux
             //Permet d'augmenter le score de 1 et de le mettre a jours sur le ¨PF
             score++;
             txtScore.Text = $"Score : {score}";
@@ -155,6 +164,31 @@ namespace TapeSouris
             {
                 minuterie.Stop();
                 TerminerJeu();
+            }
+        }
+        private void Jeu_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                if (!estEnPause)
+                {
+                    estEnPause = true;
+                    jeuEnCours = false;
+                    cts.Cancel();
+                    minuterie.Stop(); // Stop le timer
+                                      // Empêche tous les boutons actifs de continuer
+                    foreach (var btn in MainGrid.Children.OfType<Button>())
+                        btn.IsEnabled = false;
+                }
+
+                else
+                {
+                    estEnPause = false;
+                    jeuEnCours = true;
+                    minuterie.Start(); // Redémarre le timer
+                    Demarrage();
+                }
+
             }
         }
         private void TerminerJeu()
