@@ -25,6 +25,12 @@ namespace TapeSouris
         }
         private void btnNiveau1_Click(object sender, RoutedEventArgs e)
         {
+
+            DialogResult = true;
+        }
+        private void btnNiveau2_Click(object sender, RoutedEventArgs e)
+        {
+
             DialogResult = true;
         }
     }

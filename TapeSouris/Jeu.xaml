@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TapeSouris"
         mc:Ignorable="d"
-        Title="Jeu" Height="450" Width="800" WindowState="Maximized" Icon="/images/souris.png">
+        Title="Jeu" Height="450" Width="800" WindowState="Maximized" MinWidth="1000" MinHeight="562.5" Icon="/images/souris.png">
     <Grid x:Name="MainGrid">
         <Image Source="/images/sol.jpg" Stretch="Fill"/>
         <Image Source="/images/trou.png" Stretch="Fill" Margin="40,75,610,309" Height="50" Width="150"/>
@@ -30,7 +30,7 @@
         <Button Name="Souris10" Click="btnSouris_Click" Margin="420,325,230,75" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
         <Image Source="/images/trou.png" Stretch="Fill" Margin="610,325,40,75" Height="50" Width="150"/>
         <Button Name="Souris11" Click="btnSouris_Click" Margin="610,325,40,75" Height="50" Width="150" Background="Transparent" BorderThickness="0,0,0,0"/>
-        TextBlock x:Name="txtScore"
+        <TextBlock x:Name="txtScore"
            Text="Score : 0"
            FontSize="40"
            HorizontalAlignment="Center"
@@ -42,6 +42,6 @@
            HorizontalAlignment="Center"
            VerticalAlignment="Top"
            Margin="0,60,0,0"/>
-    </Grid>
+    
     </Grid>
 </Window>

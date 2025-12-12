@@ -27,9 +27,10 @@ namespace TapeSouris
         //Calcul su caore
         private int score = 0;
         //Temps du niveau 
-        private int tempsRestant = 30;
+        private int tempsRestant = 100;
         //Créer un timer du nom de minuterie
         private DispatcherTimer minuterie;
+        private bool jeuEnCours = true;
 
 
         //Permet de lancer les methodes lorsque la fenetre est ouverte
@@ -38,6 +39,7 @@ namespace TapeSouris
             InitializeComponent();
             Demarrage();
             InitializeTimer();
+            var fenetreNiveaux = new SelectionNiveaux();
         }
 
 
@@ -59,7 +61,7 @@ namespace TapeSouris
             await Task.Delay(1000);
             //Boucle d'apparition des boutons
 
-            while (true)
+            while (jeuEnCours == true)
             {
                 //Création du jeton a chaque boucle
                 cts = new CancellationTokenSource();
@@ -68,8 +70,17 @@ namespace TapeSouris
                 //Verifie si le bouton est pas déjà actif (si le niveau en fait apparaitre plusieurs a la fois)
                 if (!btn.IsEnabled)
                 {
-                    btn.IsEnabled = true;
+                    btn.Visibility = Visibility.Visible;
                     //Active le bouton
+                    btn.IsEnabled = true;
+                    var sourisImage = new Image
+                    {
+                        Source = new BitmapImage(new Uri("pack://application:,,,/images/souris.png")),
+                        Stretch = Stretch.Uniform,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };  
+                    btn.Content = sourisImage;
                     //Tant que le bouton n'est pas cliqué fait le temps d'attente
                     try
                     {
@@ -101,22 +112,6 @@ namespace TapeSouris
             score++;
             txtScore.Text = $"Score : {score}";
         }
-
-                    // Le garder actif pendant un temps aléatoire
-                    {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/images/souris.png")),
-                        Stretch = Stretch.Uniform,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-                    btn.Content = sourisImage;
-
-                    // Le garder actif pendant un temps aléatoire
-                    int activeTime = apparais.Next(800, 2000);
-                    await Task.Delay(activeTime);
-
-                    // Désactiver à nouveau
-        //Permet de faire défiler le temps dans le jeu
         private void InitializeTimer()
         {
             //Initialise le timer
@@ -130,8 +125,11 @@ namespace TapeSouris
         }
         private void temspJeu(object sender, EventArgs e)
         {
+            //Reduit le temps restant sur le timer
             tempsRestant--;
+            //Actualiser la timer visuel
             txtTimer.Text = $"Temps : {tempsRestant}";
+            //Quant le timer descend a 0, lancer le stop du jeu
             if (tempsRestant <= 0)
             {
                 minuterie.Stop();
@@ -140,14 +138,33 @@ namespace TapeSouris
         }
         private void TerminerJeu()
         {
+            jeuEnCours = false;
+            cts.Cancel();
             // Désactiver tous les boutons
             foreach (var btn in MainGrid.Children.OfType<Button>())
                 btn.IsEnabled = false;
 
-            MessageBox.Show($"Temps écoulé ! Votre score : {score}");
+            // Afficher un message avec choix
+            var result = MessageBox.Show(
+                $"Temps écoulé ! Votre score : {score}\n\nVoulez-vous rejouer ?",
+                "Fin du jeu",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question
+            );
 
-            // Si tu veux, tu peux fermer la fenêtre ou proposer de rejouer
-            this.Close();
+            if (result == MessageBoxResult.Yes)
+            {
+                score = 0;
+                txtScore.Text = $"Score : {score}";
+                tempsRestant = 100;
+                jeuEnCours = true;
+                Demarrage();
+                InitializeTimer();
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }
