@@ -27,7 +27,7 @@ namespace TapeSouris
         //Calcul su caore
         private int score = 0;
         //Temps du niveau 
-        private int tempsRestant = 100;
+        private int tempsRestant = 30;
         //Créer un timer du nom de minuterie
         private DispatcherTimer minuterie;
         private bool jeuEnCours = true;
@@ -94,6 +94,8 @@ namespace TapeSouris
                     }
                     //Désactive le bouton au bout d'un certain temps si il a pas déjà été cliqué
                     btn.IsEnabled = false;
+                    btn.Content = null;                  // ❗ Retire l'image
+                    btn.Visibility = Visibility.Collapsed;
                 }
                 //Attente avant l'apparition du prochain bouton
                 await Task.Delay(apparais.Next(300, 1000));
@@ -102,12 +104,31 @@ namespace TapeSouris
 
 
         //Pour detecter un bouton cliqué et faire des modification en conséquence
-        private void btnSouris_Click(object sender, RoutedEventArgs e)
+        private async void btnSouris_Click(object sender, RoutedEventArgs e)
         {
             //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
             cts.Cancel();
             //Désactive le bouton cliqué
-            ((Button)sender).IsEnabled = false;
+            var btn = (Button)sender;
+            btn.IsEnabled = false;
+            btn.Content = null;                  // ❗ Retire l'image
+            btn.Visibility = Visibility.Collapsed;  // Masquer si tu veux
+            var toucheImage = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie.png")),
+                Stretch = Stretch.Uniform,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            // Mettre l'image sur le bouton
+            btn.Content = toucheImage;
+
+            // Afficher pendant 0,2 secondes
+            await Task.Delay(200);
+
+            // Retirer l'image
+            btn.Content = null;
             //Permet d'augmenter le score de 1 et de le mettre a jours sur le ¨PF
             score++;
             txtScore.Text = $"Score : {score}";
@@ -117,7 +138,7 @@ namespace TapeSouris
             //Initialise le timer
             minuterie = new DispatcherTimer();
             //Configure l'intervalle du Timer
-            minuterie.Interval = TimeSpan.FromMilliseconds(16);
+            minuterie.Interval = TimeSpan.FromMilliseconds(1000);
             // associe l’appel de la méthode Jeu à la fin de la minuterie
             minuterie.Tick += temspJeu;
             // lancement du timer
@@ -156,7 +177,7 @@ namespace TapeSouris
             {
                 score = 0;
                 txtScore.Text = $"Score : {score}";
-                tempsRestant = 100;
+                tempsRestant = 30;
                 jeuEnCours = true;
                 Demarrage();
                 InitializeTimer();

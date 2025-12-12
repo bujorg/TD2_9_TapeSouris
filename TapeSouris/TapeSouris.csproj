@@ -12,6 +12,7 @@
     <None Remove="images\bouton_play.png" />
     <None Remove="images\sol.jpg" />
     <None Remove="images\souris.png" />
+    <None Remove="images\touche.jpg" />
     <None Remove="images\trou.png" />
   </ItemGroup>
 
