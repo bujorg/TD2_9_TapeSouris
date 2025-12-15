@@ -16,6 +16,9 @@
     <None Remove="images\souris_etourdie.png" />
     <None Remove="images\touche.jpg" />
     <None Remove="images\trou.png" />
+    <None Remove="MusiqueNiveau1.mp3" />
+    <None Remove="Musiques\MusiqueNiveau1.mp3" />
+    <None Remove="Musiques\touche.mp3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +28,12 @@
     <Resource Include="images\souris.png" />
     <Resource Include="images\souris_etourdie.png" />
     <Resource Include="images\trou.png" />
+    <Content Include="Musiques\MusiqueNiveau1.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Musiques\touche.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

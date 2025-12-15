@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,7 +33,8 @@ namespace TapeSouris
         private DispatcherTimer minuterie;
         private bool jeuEnCours = true;
         private bool estEnPause = false;
-
+        private MediaPlayer player;
+        private MediaPlayer sonTouche;
 
         //Permet de lancer les methodes lorsque la fenetre est ouverte
         public Jeu(int tempsNiveau)
@@ -46,7 +48,16 @@ namespace TapeSouris
         {
             Demarrage();
             InitializeTimer();
+            Musique();
             this.PreviewKeyDown += Jeu_PreviewKeyDown;
+        }
+        private void Musique()
+        {
+            player = new MediaPlayer();
+            player.Open(new Uri("Musiques/MusiqueNiveau1.mp3", UriKind.Relative));
+            player.MediaEnded += (s, e) => { player.Position = TimeSpan.Zero; player.Play(); };
+            player.Volume = 0.5;
+            player.Play();  
         }
 
         //A pour but de démarer avec tout les boutons inactifs puis d'en activer un aléatoirement
@@ -117,10 +128,9 @@ namespace TapeSouris
         //Pour detecter un bouton cliqué et faire des modification en conséquence
         private async void btnSouris_Click(object sender, RoutedEventArgs e)
         {
-
-            //Désactive le bouton cliqué
             var btn = (Button)sender;
-
+            //Désactive le bouton cliqué
+            btn.IsEnabled = false;            
             var toucheImage = new Image
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie.png")),
@@ -128,22 +138,20 @@ namespace TapeSouris
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center
             };
-
             // Mettre l'image sur le bouton
             btn.Content = toucheImage;
+            sonTouche = new MediaPlayer();
+            sonTouche.Open(new Uri("Musiques/touche.mp3", UriKind.Relative));
+            sonTouche.Volume = 0.5;
+            sonTouche.Play();
+            await Task.Delay(200);
+            btn.Content = null;                  // ❗ Retire l'image
 
-            // Afficher pendant 0,2 secondes
-            await Task.Delay(1000);
-
-            // Retirer l'image
-            btn.Content = null;
             //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
             cts.Cancel();
             //Désactive le bouton cliqué
             
-            btn.IsEnabled = false;
-            btn.Content = null;                  // Retire l'image
-            btn.Visibility = Visibility.Collapsed;
+            
             
             //Permet d'augmenter le score de 1 et de le mettre a jours sur le ¨PF
             score++;
