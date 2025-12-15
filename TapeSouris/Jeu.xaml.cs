@@ -116,7 +116,7 @@ namespace TapeSouris
                     }
                     //Désactive le bouton au bout d'un certain temps si il a pas déjà été cliqué
                     btn.IsEnabled = false;
-                    btn.Content = null;                  // ❗ Retire l'image
+                    btn.Content = null;         
                     btn.Visibility = Visibility.Collapsed;
                 }
                 //Attente avant l'apparition du prochain bouton
