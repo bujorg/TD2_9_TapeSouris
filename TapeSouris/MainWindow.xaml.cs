@@ -27,9 +27,9 @@ namespace TapeSouris
             bool? rep = choixNiveau.ShowDialog();
             if (rep == true)
             {
-                Jeu jeuFenetre = new Jeu();
+                Jeu jeuFenetre = new Jeu(choixNiveau.TempsPourNiveau);
                 jeuFenetre.Show();
-                this.Hide();
+                this.Close();
             }
         }
     }

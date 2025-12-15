@@ -9,6 +9,6 @@
     <Grid>
         <Image Source="/images/sol.jpg" Stretch="Fill"/>
         <Button x:Name="btnNiveau1" Content="Niveau 1" HorizontalAlignment="Center" Margin="0,231,0,0" VerticalAlignment="Top" Click="btnNiveau1_Click"/>
-        <Button x:Name="btnNiveau2" Content="Niveau 2" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Click="btnNiveau1_Click"/>
+        <Button x:Name="btnNiveau2" Content="Niveau 2" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Click="btnNiveau2_Click"/>
     </Grid>
 </Window>

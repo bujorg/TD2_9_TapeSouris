@@ -27,21 +27,25 @@ namespace TapeSouris
         //Calcul su caore
         private int score = 0;
         //Temps du niveau 
-        private int tempsRestant = 30;
+        private int tempsRestant = 0;
         //Créer un timer du nom de minuterie
         private DispatcherTimer minuterie;
         private bool jeuEnCours = true;
 
 
         //Permet de lancer les methodes lorsque la fenetre est ouverte
-        public Jeu()
+        public Jeu(int tempsNiveau)
         {
             InitializeComponent();
-            Demarrage();
-            InitializeTimer();
-            var fenetreNiveaux = new SelectionNiveaux();
+            tempsRestant = tempsNiveau;
+            Loaded += Jeu_Loaded;
         }
 
+        private void Jeu_Loaded(object sender, RoutedEventArgs e)
+        {
+            Demarrage();
+            InitializeTimer();
+        }
 
         //A pour but de démarer avec tout les boutons inactifs puis d'en activer un aléatoirement
         private async void Demarrage()
@@ -106,13 +110,7 @@ namespace TapeSouris
         //Pour detecter un bouton cliqué et faire des modification en conséquence
         private async void btnSouris_Click(object sender, RoutedEventArgs e)
         {
-            //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
-            cts.Cancel();
-            //Désactive le bouton cliqué
             var btn = (Button)sender;
-            btn.IsEnabled = false;
-            btn.Content = null;                  // ❗ Retire l'image
-            btn.Visibility = Visibility.Collapsed;  // Masquer si tu veux
             var toucheImage = new Image
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie.png")),
@@ -125,10 +123,18 @@ namespace TapeSouris
             btn.Content = toucheImage;
 
             // Afficher pendant 0,2 secondes
-            await Task.Delay(200);
+            await Task.Delay(1000);
 
             // Retirer l'image
             btn.Content = null;
+            //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
+            cts.Cancel();
+            //Désactive le bouton cliqué
+            
+            btn.IsEnabled = false;
+            btn.Content = null;                  // ❗ Retire l'image
+            btn.Visibility = Visibility.Collapsed;  // Masquer si tu veux
+            
             //Permet d'augmenter le score de 1 et de le mettre a jours sur le ¨PF
             score++;
             txtScore.Text = $"Score : {score}";
