@@ -23,5 +23,29 @@ namespace TapeSouris
         {
             InitializeComponent();
         }
+        private void PauseMenu_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Focus();
+        }
+        private void ResumeButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Ferme le menu pause
+            this.DialogResult = true;
+            this.Close();
+        }
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                // ferme le menu pause avec touche échape
+                this.DialogResult = true;
+                this.Close();
+            }
+        }
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Ferme complètement le jeu
+            Application.Current.Shutdown();
+        }
     }
 }

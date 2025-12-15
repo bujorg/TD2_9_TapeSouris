@@ -168,28 +168,48 @@ namespace TapeSouris
         }
         private void Jeu_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
+            if (e.Key == Key.Escape && !estEnPause)
             {
-                if (!estEnPause)
-                {
-                    estEnPause = true;
-                    jeuEnCours = false;
-                    cts.Cancel();
-                    minuterie.Stop(); // Stop le timer
-                                      // Empêche tous les boutons actifs de continuer
-                    foreach (var btn in MainGrid.Children.OfType<Button>())
-                        btn.IsEnabled = false;
-                }
+                MettreEnPause();
+            }
+        }
+        private void MettreEnPause()
+        {
+            estEnPause = true;
 
-                else
-                {
-                    estEnPause = false;
-                    jeuEnCours = true;
-                    minuterie.Start(); // Redémarre le timer
-                    Demarrage();
-                }
+            // Stop le jeu
+            minuterie.Stop();
+            cts.Cancel();
+            estEnPause = true   ;
+
+
+            // Ouvre le menu pause
+            PauseMenu pause = new PauseMenu();
+            pause.Owner = this;
+
+            bool? result = pause.ShowDialog();
+
+            // ➜ Reprendre
+            if (result == true)
+            {
+                ReprendreJeu();
 
             }
+            else
+            {
+                // Quitter → la fenêtre Jeu sera fermée par PauseMenu
+                jeuEnCours = false;
+            }
+        }
+        private void ReprendreJeu()
+        {
+            estEnPause = false;
+
+            // Redémarre le timer
+            minuterie.Start();
+
+            // Relance l’apparition des boutons
+            jeuEnCours = true;
         }
         private void TerminerJeu()
         {

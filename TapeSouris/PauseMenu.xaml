@@ -6,7 +6,10 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Background="#AA000000"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        KeyDown="Window_KeyDown"
+        Loaded="PauseMenu_Loaded"
+        Focusable="True">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Jeu en pause" FontSize="24" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,20"/>
             <Button Name="ResumeButton" Content="Reprendre" Width="150" Margin="0,0,0,10" Click="ResumeButton_Click"/>
