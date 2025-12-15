@@ -145,7 +145,7 @@ namespace TapeSouris
             sonTouche.Volume = 0.5;
             sonTouche.Play();
             await Task.Delay(200);
-            btn.Content = null;                  // ❗ Retire l'image
+            btn.Content = null;
 
             //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
             cts.Cancel();
