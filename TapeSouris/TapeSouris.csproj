@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="images\bouton_play.png" />
+    <None Remove="images\pause.png" />
     <None Remove="images\sol.jpg" />
     <None Remove="images\souris.png" />
     <None Remove="images\souris_etourdie.png" />
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <Resource Include="images\bouton_play.png" />
+    <Resource Include="images\pause.png" />
     <Resource Include="images\sol.jpg" />
     <Resource Include="images\souris.png" />
     <Resource Include="images\souris_etourdie.png" />
