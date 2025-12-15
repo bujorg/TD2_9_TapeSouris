@@ -141,7 +141,7 @@ namespace TapeSouris
             // Mettre l'image sur le bouton
             btn.Content = toucheImage;
             sonTouche = new MediaPlayer();
-            sonTouche.Open(new Uri("Musiques/touche.mp3", UriKind.Relative));
+            sonTouche.Open(new Uri("Musiques/frappe.mp3", UriKind.Relative));
             sonTouche.Volume = 0.5;
             sonTouche.Play();
             await Task.Delay(200);
