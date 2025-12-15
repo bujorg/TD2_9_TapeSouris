@@ -180,10 +180,12 @@ namespace TapeSouris
                 MettreEnPause();
             }
         }
+        private void PauseMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MettreEnPause();
+        }
         private void MettreEnPause()
         {
-            estEnPause = true;
-
             // Stop le jeu
             minuterie.Stop();
             cts.Cancel();
