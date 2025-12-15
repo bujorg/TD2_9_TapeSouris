@@ -9,7 +9,7 @@
     <Grid Height="Auto" Width="Auto" >
         <Viewbox Stretch="UniformToFill">
             <Grid x:Name="MainGrid">
-                <Image Source="/images/sol.jpg" Stretch="Fill"/>
+                <Image x:Name="imgBackground" Stretch="Fill"/>
                 <Image Source="/images/trou.png" Stretch="Fill" Margin="40,75,610,309" Height="50" Width="150"/>
                 <Button Name="Souris1" Click="btnSouris_Click" Margin="40,75,610,309" Height="50" Width="150"/>
                 <Image Source="/images/trou.png" Stretch="Fill" Margin="230,75,420,309" Height="50" Width="150"/>

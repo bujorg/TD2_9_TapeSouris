@@ -12,6 +12,8 @@
     <None Remove="images\bouton_play.png" />
     <None Remove="images\pause.png" />
     <None Remove="images\sol.jpg" />
+    <None Remove="images\sol_mc.jpg" />
+    <None Remove="images\sol_mc.png" />
     <None Remove="images\souris.png" />
     <None Remove="images\souris_etourdie.png" />
     <None Remove="images\touche.jpg" />
@@ -19,6 +21,7 @@
     <None Remove="MusiqueNiveau1.mp3" />
     <None Remove="Musiques\frappe.mp3" />
     <None Remove="Musiques\MusiqueNiveau1.mp3" />
+    <None Remove="Musiques\MusiqueNiveau2.mp3" />
     <None Remove="Musiques\touche.mp3" />
   </ItemGroup>
 
@@ -26,6 +29,7 @@
     <Resource Include="images\bouton_play.png" />
     <Resource Include="images\pause.png" />
     <Resource Include="images\sol.jpg" />
+    <Resource Include="images\sol_mc.jpg" />
     <Resource Include="images\souris.png" />
     <Resource Include="images\souris_etourdie.png" />
     <Resource Include="images\trou.png" />
@@ -33,6 +37,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Musiques\MusiqueNiveau1.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Musiques\MusiqueNiveau2.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
