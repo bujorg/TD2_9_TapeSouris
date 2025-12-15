@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:TapeSouris"
         mc:Ignorable="d"
         Title="SelectionNiveaux" Height="450" Width="800" WindowState="Maximized" Icon="/images/souris.png">
-    <Grid>
-        <Image Source="/images/sol.jpg" Stretch="Fill"/>
-        <Button x:Name="btnNiveau1" Content="Niveau 1" HorizontalAlignment="Center" Margin="0,231,0,0" VerticalAlignment="Top" Click="btnNiveau1_Click"/>
-        <Button x:Name="btnNiveau2" Content="Niveau 2" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Click="btnNiveau2_Click"/>
+    <Grid Height="Auto" Width="Auto" >
+        <Viewbox Stretch="UniformToFill">
+            <Grid>
+                <Image Source="/images/sol.jpg" Stretch="Fill"/>
+                <Button x:Name="btnNiveau1" Content="Niveau 1" HorizontalAlignment="Center" Margin="0,231,0,0" VerticalAlignment="Top" Click="btnNiveau1_Click"/>
+                <Button x:Name="btnNiveau2" Content="Niveau 2" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Click="btnNiveau2_Click"/>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>

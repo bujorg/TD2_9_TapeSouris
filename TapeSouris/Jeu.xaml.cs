@@ -142,8 +142,8 @@ namespace TapeSouris
             //Désactive le bouton cliqué
             
             btn.IsEnabled = false;
-            btn.Content = null;                  // ❗ Retire l'image
-            btn.Visibility = Visibility.Collapsed;  // Masquer si tu veux
+            btn.Content = null;                  // Retire l'image
+            btn.Visibility = Visibility.Collapsed;
             
             //Permet d'augmenter le score de 1 et de le mettre a jours sur le ¨PF
             score++;
