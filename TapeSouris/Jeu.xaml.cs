@@ -31,6 +31,7 @@ namespace TapeSouris
         //Créer un timer du nom de minuterie
         private DispatcherTimer minuterie;
         private bool jeuEnCours = true;
+        private bool estEnPause = false;
 
 
         //Permet de lancer les methodes lorsque la fenetre est ouverte
@@ -45,6 +46,7 @@ namespace TapeSouris
         {
             Demarrage();
             InitializeTimer();
+            this.PreviewKeyDown += Jeu_PreviewKeyDown;
         }
 
         //A pour but de démarer avec tout les boutons inactifs puis d'en activer un aléatoirement
@@ -67,6 +69,11 @@ namespace TapeSouris
 
             while (jeuEnCours == true)
             {
+                if (estEnPause)
+                {
+                    await Task.Delay(100); // Attend que la pause soit levée
+                    continue;
+                }
                 //Création du jeton a chaque boucle
                 cts = new CancellationTokenSource();
                 //Chosi un bouton aléatoire
@@ -110,7 +117,10 @@ namespace TapeSouris
         //Pour detecter un bouton cliqué et faire des modification en conséquence
         private async void btnSouris_Click(object sender, RoutedEventArgs e)
         {
+
+            //Désactive le bouton cliqué
             var btn = (Button)sender;
+
             var toucheImage = new Image
             {
                 Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie.png")),
@@ -162,6 +172,51 @@ namespace TapeSouris
                 minuterie.Stop();
                 TerminerJeu();
             }
+        }
+        private void Jeu_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape && !estEnPause)
+            {
+                MettreEnPause();
+            }
+        }
+        private void MettreEnPause()
+        {
+            estEnPause = true;
+
+            // Stop le jeu
+            minuterie.Stop();
+            cts.Cancel();
+            estEnPause = true   ;
+
+
+            // Ouvre le menu pause
+            PauseMenu pause = new PauseMenu();
+            pause.Owner = this;
+
+            bool? result = pause.ShowDialog();
+
+            // ➜ Reprendre
+            if (result == true)
+            {
+                ReprendreJeu();
+
+            }
+            else
+            {
+                // Quitter → la fenêtre Jeu sera fermée par PauseMenu
+                jeuEnCours = false;
+            }
+        }
+        private void ReprendreJeu()
+        {
+            estEnPause = false;
+
+            // Redémarre le timer
+            minuterie.Start();
+
+            // Relance l’apparition des boutons
+            jeuEnCours = true;
         }
         private void TerminerJeu()
         {

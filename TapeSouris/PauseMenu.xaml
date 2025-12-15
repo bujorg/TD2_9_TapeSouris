@@ -1,0 +1,18 @@
+﻿<Window x:Class="TapeSouris.PauseMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Pause" Height="200" Width="300"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="#AA000000"
+        AllowsTransparency="True"
+        KeyDown="Window_KeyDown"
+        Loaded="PauseMenu_Loaded"
+        Focusable="True">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Jeu en pause" FontSize="24" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <Button Name="ResumeButton" Content="Reprendre" Width="150" Margin="0,0,0,10" Click="ResumeButton_Click"/>
+            <Button Name="QuitButton" Content="Quitter" Width="150" Click="QuitButton_Click"/>
+        </StackPanel>
+</Window>

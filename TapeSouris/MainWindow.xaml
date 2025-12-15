@@ -10,18 +10,12 @@
         <Image Source="/images/sol.jpg" Stretch="Fill"/>
         <TextBlock Text="Bienvenue à Souris Land !" FontSize="55" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gold" Background="Transparent" Margin="0,0,0,300" FontFamily="Matura MT Script Capitals">
             <TextBlock.Effect>
-                <DropShadowEffect Color="Black"
-                                  Direction="320"
-                                  ShadowDepth="8"
-                                  BlurRadius="8"/>
+                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="8" BlurRadius="8"/>
             </TextBlock.Effect>
         </TextBlock>
         <TextBlock Text="Objectif: Reussir a attraper toutes les souris" FontSize="25" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gold" Background="Transparent" FontFamily="Kristen ITC">
             <TextBlock.Effect>
-                <DropShadowEffect Color="Black"
-                                  Direction="320"
-                                  ShadowDepth="5"
-                                  BlurRadius="8"/>
+                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" BlurRadius="8"/>
             </TextBlock.Effect>
         </TextBlock>
         <Image Margin="350,286,350,98" Width="100" Height="50" Source="/images/bouton_play.png" Panel.ZIndex="1"/>
