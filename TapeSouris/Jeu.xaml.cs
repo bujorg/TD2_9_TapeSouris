@@ -149,7 +149,6 @@ namespace TapeSouris
 
             //Permet d'arreter le temps d'arêt (await) du bouton lorsqu'il est cencé entre actif
             cts.Cancel();
-            //Désactive le bouton cliqué
             
             
             
