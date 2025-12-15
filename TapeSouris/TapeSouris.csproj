@@ -31,9 +31,6 @@
     <Content Include="Musiques\MusiqueNiveau1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Musiques\touche.mp3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>
