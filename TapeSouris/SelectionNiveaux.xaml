@@ -29,12 +29,27 @@
                 <Image Margin="0,200,200,0" Source="/images/SelectNivBut.png" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Width="80" Height="20"/>
                 <Image Margin="0,200,0,0" Source="/images/SelectNivBut.png" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Width="80" Height="20"/>
                 <Image Margin="200,200,0,0" Source="/images/SelectNivBut.png" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Width="80" Height="20"/>
-                <Image Margin="0,0,45,148" Source="/images/SelectNivBut.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Stretch="Fill" Width="130" Height="30"/>
+                <Image Margin="0,0,45,155" Source="/images/SelectNivBut.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Stretch="Fill" Width="130" Height="30"/>
                 <Button x:Name="btnNiveau1" Content="Niveau 1" HorizontalAlignment="Center" Margin="0,200,200,0" VerticalAlignment="Top" Click="btnNiveau1_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
                 <Button x:Name="btnNiveau2" Content="Niveau 2" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Click="btnNiveau2_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
-                <Button x:Name="btnNiveau3" Content="Niveau 3" HorizontalAlignment="Center" Margin="200,200,0,0" VerticalAlignment="Top" Click="btnNiveau3_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
+                <Button x:Name="btnNiveau3" Content="Niveau 3" HorizontalAlignment="Center" Margin="200,200,0,0" VerticalAlignment="Top" Background="Transparent" BorderThickness="0,0,0,0"/>
                 <Button Content="Réinitialiser les scores" Width="120" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="right" Margin="0,0,50,150" Click="ResetScores_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
             </Grid>
         </Viewbox>
     </Grid>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 </Window>
