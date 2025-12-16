@@ -14,7 +14,7 @@
     <None Remove="images\pause.png" />
     <None Remove="images\SelectNivBut.png" />
     <None Remove="images\sol.jpg" />
-    <None Remove="images\sol_mc.jpg" />
+    <None Remove="images\sol_dehors.jpg" />
     <None Remove="images\sol_mc.png" />
     <None Remove="images\souris.png" />
     <None Remove="images\souris_etourdie.png" />
@@ -36,7 +36,8 @@
     <Resource Include="images\pause.png" />
     <Resource Include="images\SelectNivBut.png" />
     <Resource Include="images\sol.jpg" />
-    <Resource Include="images\sol_mc.jpg" />
+    <Resource Include="images\sol_dehors.jpg" />
+    <Resource Include="images\sol_mc.png" />
     <Resource Include="images\souris.png" />
     <Resource Include="images\souris_etourdie.png" />
     <Resource Include="images\souris_etourdie_mc.png" />

@@ -34,7 +34,7 @@
                 <Image Margin="0,0,45,155" Source="/images/SelectNivBut.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Stretch="Fill" Width="130" Height="30"/>
                 <Button x:Name="btnNiveau1" Content="Niveau 1" HorizontalAlignment="Center" Margin="0,200,200,0" VerticalAlignment="Top" Click="btnNiveau1_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
                 <Button x:Name="btnNiveau2" Content="Niveau 2" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Click="btnNiveau2_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
-                <Button x:Name="btnNiveau3" Content="Niveau 3" HorizontalAlignment="Center" Margin="200,200,0,0" VerticalAlignment="Top" Background="Transparent" BorderThickness="0,0,0,0"/>
+                <Button x:Name="btnNiveau3" Content="Niveau 3" HorizontalAlignment="Center" Margin="200,200,0,0" VerticalAlignment="Top" Click="btnNiveau3_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
                 <Button Content="Réinitialiser les scores" Width="120" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="right" Margin="0,0,50,150" Click="ResetScores_Click" Background="Transparent" BorderThickness="0,0,0,0"/>
             </Grid>
         </Viewbox>

@@ -35,14 +35,28 @@ namespace TapeSouris
             InitializeComponent();
             tempsRestant = tempsNiveau;
             niveau = niveauChoisi;
+            Closing += Jeu_Closing;
             Loaded += Jeu_Loaded;
+        }
+        private void Jeu_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // 🏆 Sauvegarde du meilleur score (y compris niveau infini)
+            ScoreManager.SauvegarderScore(niveau, score);
         }
 
         private void Jeu_Loaded(object sender, RoutedEventArgs e)
         {
             ChangerBackground();
             Demarrage();
-            InitializeTimer();
+            if (niveau != 3)
+            {
+                InitializeTimer();
+            }
+            else
+            {
+                txtTimer.Text = "Temps : ∞";
+            }
+
             Musique();
             PreviewKeyDown += Jeu_PreviewKeyDown;
         }
@@ -58,7 +72,12 @@ namespace TapeSouris
             else if (niveau == 2)
             {
                 imgBackground.Source = new BitmapImage(
-                    new Uri("pack://application:,,,/images/sol_mc.jpg"));
+                    new Uri("pack://application:,,,/images/sol_dehors.jpg"));
+            }
+            else if (niveau == 3)
+            {
+                imgBackground.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/images/sol_mc.png"));
             }
         }
 
@@ -66,9 +85,9 @@ namespace TapeSouris
         {
             player = new MediaPlayer();
 
-            if (niveau == 1)
+            if (niveau == 1 || niveau == 2)
                 player.Open(new Uri("Musiques/MusiqueNiveau1.mp3", UriKind.Relative));
-            if (niveau == 2)
+            if (niveau == 3)
                 player.Open(new Uri("Musiques/MusiqueNiveau2.mp3", UriKind.Relative));
 
             player.MediaEnded += (s, e) =>
@@ -110,7 +129,7 @@ namespace TapeSouris
                     btn.Visibility = Visibility.Visible;
                     btn.IsEnabled = true;
 
-                    if (niveau == 1)
+                    if (niveau == 1 || niveau == 2)
                     {
                         btn.Content = new Image
                         {
@@ -118,7 +137,7 @@ namespace TapeSouris
                             Stretch = Stretch.Uniform
                         };
                     }
-                    if (niveau == 2)
+                    if (niveau == 3)
                     {
                         btn.Content = new Image
                         {
@@ -145,7 +164,7 @@ namespace TapeSouris
         {
             var btn = (Button)sender;
             btn.IsEnabled = false;
-            if (niveau == 1)
+            if (niveau == 1 || niveau == 2)
             {
                 btn.Content = new Image
                 {
@@ -153,7 +172,7 @@ namespace TapeSouris
                     Stretch = Stretch.Uniform
                 };
             }
-            if (niveau == 2)
+            if (niveau == 3)
             {
                 btn.Content = new Image
                 {
@@ -163,9 +182,9 @@ namespace TapeSouris
             }
 
             sonTouche = new MediaPlayer();
-            if (niveau==1)
+            if (niveau==1 || niveau==2)
                 sonTouche.Open(new Uri("Musiques/frappe.mp3", UriKind.Relative));
-            if (niveau==2)
+            if (niveau==3)
                 sonTouche.Open(new Uri("Musiques/frappe_mc.mp3", UriKind.Relative));
             sonTouche.Volume = volumeJeu; // 🔊 VOLUME CENTRALISÉ
             sonTouche.Play();
@@ -192,15 +211,21 @@ namespace TapeSouris
 
         private void TempsJeu(object sender, EventArgs e)
         {
+            // ♾️ Niveau infini → on ne fait rien
+            if (niveau == 3)
+                return;
+
             tempsRestant--;
             txtTimer.Text = $"Temps : {tempsRestant}";
 
             if (tempsRestant <= 0)
             {
-                minuterie.Stop();
+                minuterie?.Stop();   // ✅ sécurisé
                 TerminerJeu();
             }
         }
+
+
 
         private void Jeu_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -215,7 +240,7 @@ namespace TapeSouris
 
         private void MettreEnPause()
         {
-            minuterie.Stop();
+            minuterie?.Stop();
             cts.Cancel();
             estEnPause = true;
 
@@ -244,7 +269,7 @@ namespace TapeSouris
         private void ReprendreJeu()
         {
             estEnPause = false;
-            minuterie.Start();
+            minuterie?.Start();
             jeuEnCours = true;
         }
 
@@ -279,30 +304,41 @@ namespace TapeSouris
             }
             else if (result == MessageBoxResult.No)
             {
-                // 🏠 Retour à la sélection des niveaux
-                SelectionNiveaux menu = new SelectionNiveaux();
-                menu.Show();
-                Close();
+                // 🏠 Retour menu
+                QuitterJeu(retournerMenu: true);
             }
             else
             {
-                // ❌ Quitter le jeu
-                Close();
+                // ❌ Quitter jeu
+                QuitterJeu(retournerMenu: false);
             }
 
 
         }
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            minuterie.Stop();
+            QuitterJeu(retournerMenu: true);
+        }
+
+        private void QuitterJeu(bool retournerMenu)
+        {
+            // 🛑 Arrêt propre
+            minuterie?.Stop();
             cts.Cancel();
             player?.Stop();
 
-            SelectionNiveaux menu = new SelectionNiveaux();
-            menu.Show();
+            // 🏆 Sauvegarde du score
+            ScoreManager.SauvegarderScore(niveau, score);
+
+            if (retournerMenu)
+            {
+                SelectionNiveaux menu = new SelectionNiveaux();
+                menu.Show();
+            }
 
             Close();
         }
+
 
     }
 }

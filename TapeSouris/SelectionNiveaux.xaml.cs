@@ -25,11 +25,17 @@ namespace TapeSouris
             jeu.Show();
             Close();
         }
-
+        private void btnNiveau3_Click(object sender, RoutedEventArgs e)
+        {
+            Jeu jeu = new Jeu(0, 3);
+            jeu.Show();
+            Close();
+        }
         private void ChargerScores()
         {
             scoreNiveau1.Text = $"Meilleur score : {ScoreManager.MeilleurScore(1)}";
             scoreNiveau2.Text = $"Meilleur score : {ScoreManager.MeilleurScore(2)}";
+            scoreNiveau3.Text = $"Meilleur score : {ScoreManager.MeilleurScore(3)}";
         }
         private void ResetScores_Click(object sender, RoutedEventArgs e)
         {
