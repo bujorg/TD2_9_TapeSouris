@@ -38,5 +38,12 @@ namespace TapeSouris
             var scores = ChargerScores();
             return scores.ContainsKey(niveau) ? scores[niveau] : 0;
         }
+
+        // 🔥 NOUVEAU
+        public static void ResetScores()
+        {
+            if (File.Exists(filePath))
+                File.Delete(filePath);
+        }
     }
 }

@@ -163,7 +163,10 @@ namespace TapeSouris
             }
 
             sonTouche = new MediaPlayer();
-            sonTouche.Open(new Uri("Musiques/frappe.mp3", UriKind.Relative));
+            if (niveau==1)
+                sonTouche.Open(new Uri("Musiques/frappe.mp3", UriKind.Relative));
+            if (niveau==2)
+                sonTouche.Open(new Uri("Musiques/frappe_mc.mp3", UriKind.Relative));
             sonTouche.Volume = volumeJeu; // 🔊 VOLUME CENTRALISÉ
             sonTouche.Play();
 
@@ -255,23 +258,38 @@ namespace TapeSouris
                 btn.IsEnabled = false;
 
             var result = MessageBox.Show(
-                $"Temps écoulé ! Score : {score}\nRejouer ?",
-                "Fin",
-                MessageBoxButton.YesNo);
+    $"Temps écoulé ! Score : {score}\n\n" +
+    "Oui = Rejouer\n" +
+    "Non = Retour au menu\n" +
+    "Annuler = Quitter le jeu",
+    "Fin de partie",
+    MessageBoxButton.YesNoCancel,
+    MessageBoxImage.Information);
 
             if (result == MessageBoxResult.Yes)
             {
+                // 🔄 Rejouer
                 score = 0;
                 txtScore.Text = "Score : 0";
                 tempsRestant = niveau == 1 ? 30 : 15;
                 jeuEnCours = true;
+
                 Demarrage();
                 InitializeTimer();
             }
-            else
+            else if (result == MessageBoxResult.No)
             {
+                // 🏠 Retour à la sélection des niveaux
+                SelectionNiveaux menu = new SelectionNiveaux();
+                menu.Show();
                 Close();
             }
+            else
+            {
+                // ❌ Quitter le jeu
+                Close();
+            }
+
 
         }
         private void Menu_Click(object sender, RoutedEventArgs e)
