@@ -249,6 +249,7 @@ namespace TapeSouris
         {
             jeuEnCours = false;
             cts.Cancel();
+            ScoreManager.SauvegarderScore(niveau, score);
 
             foreach (var btn in MainGrid.Children.OfType<Button>())
                 btn.IsEnabled = false;

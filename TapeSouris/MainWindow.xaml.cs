@@ -11,18 +11,12 @@ namespace TapeSouris
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            SelectionNiveaux choixNiveau = new SelectionNiveaux();
-            bool? rep = choixNiveau.ShowDialog();
+            // Ouvre la sélection des niveaux
+            SelectionNiveaux selectionNiveaux = new SelectionNiveaux();
+            selectionNiveaux.Show();
 
-            if (rep == true)
-            {
-                Jeu jeuFenetre = new Jeu(
-                    choixNiveau.TempsPourNiveau,
-                    choixNiveau.NiveauChoisi
-                );
-                jeuFenetre.Show();
-                this.Close();
-            }
+            // Ferme le menu principal
+            Close();
         }
     }
 }

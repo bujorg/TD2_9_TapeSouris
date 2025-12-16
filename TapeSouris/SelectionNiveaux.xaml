@@ -10,6 +10,18 @@
         <Viewbox Stretch="UniformToFill">
             <Grid>
                 <Image Source="/images/sol.jpg" Stretch="Fill"/>
+                <TextBlock x:Name="scoreNiveau1"
+           Text="Meilleur score : 0"
+           HorizontalAlignment="Center"
+           Margin="0,200,0,0"
+           Foreground="White"/>
+
+                <TextBlock x:Name="scoreNiveau2"
+           Text="Meilleur score : 0"
+           HorizontalAlignment="Center"
+           Margin="0,290,0,0"
+           Foreground="White"/>
+                
                 <Button x:Name="btnNiveau1" Content="Niveau 1" HorizontalAlignment="Center" Margin="0,231,0,0" VerticalAlignment="Top" Click="btnNiveau1_Click"/>
                 <Button x:Name="btnNiveau2" Content="Niveau 2" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Click="btnNiveau2_Click"/>
             </Grid>
