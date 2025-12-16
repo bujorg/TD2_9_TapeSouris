@@ -32,8 +32,8 @@
                 <Button Name="Souris10" Click="btnSouris_Click" Margin="420,325,230,75" Height="50" Width="150"/>
                 <Image Source="/images/trou.png" Stretch="Fill" Margin="610,325,40,75" Height="50" Width="150"/>
                 <Button Name="Souris11" Click="btnSouris_Click" Margin="610,325,40,75" Height="50" Width="150"/>
-                <TextBlock x:Name="txtScore" Text="Score : 0" FontSize="40" HorizontalAlignment="left" VerticalAlignment="Top" Margin="0,10,0,0" Foreground="White"/>
-                <TextBlock x:Name="txtTimer" Text="Temps : 0" FontSize="40" HorizontalAlignment="left" VerticalAlignment="Top" Margin="0,60,0,0" Foreground="White"/>
+                <TextBlock x:Name="txtScore" Text="Score : 0" FontSize="30" HorizontalAlignment="left" VerticalAlignment="Top" Margin="0,5,0,0" Foreground="White"/>
+                <TextBlock x:Name="txtTimer" Text="Temps : 0" FontSize="30" HorizontalAlignment="left" VerticalAlignment="Top" Margin="0,50,0,0" Foreground="White"/>
                 <Image Source="/images/pause.png" Stretch="Fill" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,7,7,0" Height="75" Width="75"/>
                 <Image Source="/images/back.png" Stretch="Fill" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,100,0" Width="75" Height="35"/>
                 <Menu Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" Background="Transparent">
