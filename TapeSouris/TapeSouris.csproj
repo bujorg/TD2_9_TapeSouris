@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\back.png" />
     <None Remove="images\bouton_play.png" />
     <None Remove="images\pause.png" />
     <None Remove="images\sol.jpg" />
@@ -28,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\back.png" />
     <Resource Include="images\bouton_play.png" />
     <Resource Include="images\pause.png" />
     <Resource Include="images\sol.jpg" />

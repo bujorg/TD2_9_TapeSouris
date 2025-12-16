@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Jeu" Height="450" Width="800" WindowState="Maximized" MinWidth="1000" MinHeight="562.5" Icon="/images/souris.png">
     <Grid Height="Auto" Width="Auto" >
+        <Image x:Name="imgBackground" Stretch="Fill"/>
         <Viewbox Stretch="UniformToFill">
             <Grid x:Name="MainGrid">
-                <Image x:Name="imgBackground" Stretch="Fill"/>
                 <Image Source="/images/trou.png" Stretch="Fill" Margin="40,75,610,309" Height="50" Width="150"/>
                 <Button Name="Souris1" Click="btnSouris_Click" Margin="40,75,610,309" Height="50" Width="150"/>
                 <Image Source="/images/trou.png" Stretch="Fill" Margin="230,75,420,309" Height="50" Width="150"/>
@@ -35,13 +35,13 @@
                 <TextBlock x:Name="txtScore" Text="Score : 0" FontSize="40" HorizontalAlignment="left" VerticalAlignment="Top" Margin="0,10,0,0" Foreground="White"/>
                 <TextBlock x:Name="txtTimer" Text="Temps : 0" FontSize="40" HorizontalAlignment="left" VerticalAlignment="Top" Margin="0,60,0,0" Foreground="White"/>
                 <Image Source="/images/pause.png" Stretch="Fill" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,7,7,0" Height="75" Width="75"/>
+                <Image Source="/images/back.png" Stretch="Fill" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,100,0" Width="75" Height="35"/>
                 <Menu Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" Background="Transparent">
-                    <MenuItem Header="" Click="PauseMenuItem_Click" FontSize="25" Width="50" Height="50"/>
+                    <MenuItem Click="PauseMenuItem_Click" FontSize="25" Width="50" Height="50"/>
                 </Menu>
-                <Menu Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,100,0" Background="Transparent">
-                    <MenuItem Header="Menu" Click="Menu_Click" Width="50" Height="50"/>
+                <Menu Width="75" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,100,0" Background="Transparent">
+                    <MenuItem Click="Menu_Click" Width="75" Height="35"/>
                 </Menu>
-                
             </Grid>
         </Viewbox>
     </Grid>
