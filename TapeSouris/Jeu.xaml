@@ -38,6 +38,10 @@
                 <Menu Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" Background="Transparent">
                     <MenuItem Header="" Click="PauseMenuItem_Click" FontSize="25" Width="50" Height="50"/>
                 </Menu>
+                <Menu Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,100,0" Background="Transparent">
+                    <MenuItem Header="Menu" Click="Menu_Click" Width="50" Height="50"/>
+                </Menu>
+                
             </Grid>
         </Viewbox>
     </Grid>

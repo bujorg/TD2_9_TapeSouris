@@ -20,7 +20,6 @@ namespace TapeSouris
                     choixNiveau.TempsPourNiveau,
                     choixNiveau.NiveauChoisi
                 );
-
                 jeuFenetre.Show();
                 this.Close();
             }

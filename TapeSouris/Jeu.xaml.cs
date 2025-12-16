@@ -26,6 +26,8 @@ namespace TapeSouris
 
         private MediaPlayer player;
         private MediaPlayer sonTouche;
+        private double volumeJeu = 1;
+
 
         // 🔹 CONSTRUCTEUR MODIFIÉ
         public Jeu(int tempsNiveau, int niveauChoisi)
@@ -75,9 +77,10 @@ namespace TapeSouris
                 player.Play();
             };
 
-            player.Volume = 0.5;
+            player.Volume = volumeJeu; // 🔊 VOLUME CENTRALISÉ
             player.Play();
         }
+
 
         private async void Demarrage()
         {
@@ -107,12 +110,22 @@ namespace TapeSouris
                     btn.Visibility = Visibility.Visible;
                     btn.IsEnabled = true;
 
-                    btn.Content = new Image
+                    if (niveau == 1)
                     {
-                        Source = new BitmapImage(new Uri("pack://application:,,,/images/souris.png")),
-                        Stretch = Stretch.Uniform
-                    };
-
+                        btn.Content = new Image
+                        {
+                            Source = new BitmapImage(new Uri("pack://application:,,,/images/souris.png")),
+                            Stretch = Stretch.Uniform
+                        };
+                    }
+                    if (niveau == 2)
+                    {
+                        btn.Content = new Image
+                        {
+                            Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_mc.png")),
+                            Stretch = Stretch.Uniform
+                        };
+                    }
                     try
                     {
                         await Task.Delay(apparais.Next(800, 2000), cts.Token);
@@ -132,16 +145,26 @@ namespace TapeSouris
         {
             var btn = (Button)sender;
             btn.IsEnabled = false;
-
-            btn.Content = new Image
+            if (niveau == 1)
             {
-                Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie.png")),
-                Stretch = Stretch.Uniform
-            };
+                btn.Content = new Image
+                {
+                    Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie.png")),
+                    Stretch = Stretch.Uniform
+                };
+            }
+            if (niveau == 2)
+            {
+                btn.Content = new Image
+                {
+                    Source = new BitmapImage(new Uri("pack://application:,,,/images/souris_etourdie_mc.png")),
+                    Stretch = Stretch.Uniform
+                };
+            }
 
             sonTouche = new MediaPlayer();
             sonTouche.Open(new Uri("Musiques/frappe.mp3", UriKind.Relative));
-            sonTouche.Volume = 0.5;
+            sonTouche.Volume = volumeJeu; // 🔊 VOLUME CENTRALISÉ
             sonTouche.Play();
 
             await Task.Delay(200);
@@ -193,14 +216,27 @@ namespace TapeSouris
             cts.Cancel();
             estEnPause = true;
 
-            PauseMenu pause = new PauseMenu { Owner = this };
+            PauseMenu pause = new PauseMenu
+            {
+                Owner = this,
+                Volume = volumeJeu
+            };
+
             bool? result = pause.ShowDialog();
+
+            // 🔊 Récupère le volume choisi
+            volumeJeu = pause.Volume;
+
+            // 🔊 Applique immédiatement
+            if (player != null)
+                player.Volume = volumeJeu;
 
             if (result == true)
                 ReprendreJeu();
             else
                 jeuEnCours = false;
         }
+
 
         private void ReprendreJeu()
         {
@@ -235,6 +271,19 @@ namespace TapeSouris
             {
                 Close();
             }
+
         }
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            minuterie.Stop();
+            cts.Cancel();
+            player?.Stop();
+
+            SelectionNiveaux menu = new SelectionNiveaux();
+            menu.Show();
+
+            Close();
+        }
+
     }
 }

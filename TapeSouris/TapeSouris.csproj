@@ -16,6 +16,8 @@
     <None Remove="images\sol_mc.png" />
     <None Remove="images\souris.png" />
     <None Remove="images\souris_etourdie.png" />
+    <None Remove="images\souris_etourdie_mc.png" />
+    <None Remove="images\souris_mc.png" />
     <None Remove="images\touche.jpg" />
     <None Remove="images\trou.png" />
     <None Remove="MusiqueNiveau1.mp3" />
@@ -32,6 +34,8 @@
     <Resource Include="images\sol_mc.jpg" />
     <Resource Include="images\souris.png" />
     <Resource Include="images\souris_etourdie.png" />
+    <Resource Include="images\souris_etourdie_mc.png" />
+    <Resource Include="images\souris_mc.png" />
     <Resource Include="images\trou.png" />
     <Content Include="Musiques\frappe.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
