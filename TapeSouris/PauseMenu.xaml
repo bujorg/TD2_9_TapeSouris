@@ -11,7 +11,8 @@
         AllowsTransparency="True"
         KeyDown="Window_KeyDown"
         Loaded="PauseMenu_Loaded"
-        Focusable="True">
+        Focusable="True"
+        Icon="/images/souris.png">
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -27,8 +28,8 @@
 
         <Slider x:Name="VolumeSlider"
                 Minimum="0"
-                Maximum="2"
-                Value="1"
+                Maximum="1"
+                Value="0.5"
                 Width="150"
                 Margin="0,0,0,20"
                 ValueChanged="VolumeSlider_ValueChanged"/>

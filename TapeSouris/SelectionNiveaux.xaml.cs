@@ -6,11 +6,13 @@ namespace TapeSouris
     {
         public int TempsPourNiveau { get; private set; }
         public int NiveauChoisi { get; private set; }
+        private readonly int[] scoreRequis = { 0, 15, 8 };
 
         public SelectionNiveaux()
         {
             InitializeComponent();
             ChargerScores();
+            MettreAJourDeblocage();
         }
         private void btnNiveau1_Click(object sender, RoutedEventArgs e)
         {
@@ -36,6 +38,9 @@ namespace TapeSouris
             scoreNiveau1.Text = $"Meilleur score : {ScoreManager.MeilleurScore(1)}";
             scoreNiveau2.Text = $"Meilleur score : {ScoreManager.MeilleurScore(2)}";
             scoreNiveau3.Text = $"Meilleur score : {ScoreManager.MeilleurScore(3)}";
+
+            btnNiveau2.IsEnabled = ScoreManager.MeilleurScore(2) > 0;
+            btnNiveau3.IsEnabled = ScoreManager.MeilleurScore(3) > 0;
         }
         private void ResetScores_Click(object sender, RoutedEventArgs e)
         {
@@ -50,6 +55,19 @@ namespace TapeSouris
                 ScoreManager.ResetScores();
                 ChargerScores(); // 🔄 Rafraîchit l'affichage
             }
+        }
+        private void MettreAJourDeblocage()
+        {
+            int scoreN1 = ScoreManager.MeilleurScore(1);
+            int scoreN2 = ScoreManager.MeilleurScore(2);
+
+            // 🔒 Niveau 2
+            btnNiveau2.IsEnabled = scoreN1 >= scoreRequis[1];
+            btnNiveau2.Opacity = btnNiveau2.IsEnabled ? 1 : 0.4;
+
+            // 🔒 Niveau 3
+            btnNiveau3.IsEnabled = scoreN2 >= scoreRequis[2];
+            btnNiveau3.Opacity = btnNiveau3.IsEnabled ? 1 : 0.4;
         }
 
     }

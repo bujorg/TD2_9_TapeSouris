@@ -27,6 +27,8 @@ namespace TapeSouris
         private MediaPlayer player;
         private MediaPlayer sonTouche;
         private double volumeJeu = 1;
+        private bool scoreSauvegarde = false;
+
 
 
         // 🔹 CONSTRUCTEUR MODIFIÉ
@@ -38,11 +40,7 @@ namespace TapeSouris
             Closing += Jeu_Closing;
             Loaded += Jeu_Loaded;
         }
-        private void Jeu_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            // 🏆 Sauvegarde du meilleur score (y compris niveau infini)
-            ScoreManager.SauvegarderScore(niveau, score);
-        }
+
 
         private void Jeu_Loaded(object sender, RoutedEventArgs e)
         {
@@ -59,6 +57,18 @@ namespace TapeSouris
 
             Musique();
             PreviewKeyDown += Jeu_PreviewKeyDown;
+        }
+        private void SauvegarderScoreUneFois()
+        {
+            if (!scoreSauvegarde)
+            {
+                ScoreManager.SauvegarderScore(niveau, score);
+                scoreSauvegarde = true;
+            }
+        }
+        private void Jeu_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SauvegarderScoreUneFois();
         }
 
         // 🔹 BACKGROUND SELON NIVEAU
@@ -277,7 +287,7 @@ namespace TapeSouris
         {
             jeuEnCours = false;
             cts.Cancel();
-            ScoreManager.SauvegarderScore(niveau, score);
+            SauvegarderScoreUneFois();
 
             foreach (var btn in MainGrid.Children.OfType<Button>())
                 btn.IsEnabled = false;
@@ -328,7 +338,7 @@ namespace TapeSouris
             player?.Stop();
 
             // 🏆 Sauvegarde du score
-            ScoreManager.SauvegarderScore(niveau, score);
+            SauvegarderScoreUneFois();
 
             if (retournerMenu)
             {

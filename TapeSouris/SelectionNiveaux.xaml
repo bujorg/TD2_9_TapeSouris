@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TapeSouris"
         mc:Ignorable="d"
-        Title="SelectionNiveaux" Height="450" Width="800" WindowState="Maximized" Icon="/images/souris.png">
+        Title="SelectionNiveaux" Height="450" Width="800" WindowState="Maximized" Icon="/images/souris.png" MinWidth="800" MinHeight="450">
     <Grid Height="Auto" Width="Auto" >
         <Viewbox Stretch="UniformToFill">
             <Grid Height="450" Width="800">
