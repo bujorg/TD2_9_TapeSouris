@@ -6,8 +6,10 @@ namespace TapeSouris
 {
     public static class ScoreManager
     {
+        //CHEMIN VERS LE FICHIER QUI STOCKE TOUS LES SCORES
         private static readonly string filePath = "scores.json";
 
+        //CHARGE LES SCORES À PARTIR DU FICHIER SCORES.JSON
         public static Dictionary<int, int> ChargerScores()
         {
             if (!File.Exists(filePath))
@@ -17,7 +19,7 @@ namespace TapeSouris
             return JsonSerializer.Deserialize<Dictionary<int, int>>(json)
                    ?? new Dictionary<int, int>();
         }
-
+        //PERMET DE SAUVEGARDER LES SCORES ET TESTE SI LE NOUVEAU SCORE EST SUPÉRIEUR
         public static void SauvegarderScore(int niveau, int score)
         {
             var scores = ChargerScores();
@@ -33,13 +35,14 @@ namespace TapeSouris
             }
         }
 
+        //PERMET DE DONNER LE MEILLEUR SCORE POUR CHAQUE NIVEAU, QUI VA ENSUITE ÊTRE RÉCUPÉRÉ PAR SelectionNiveau
         public static int MeilleurScore(int niveau)
         {
             var scores = ChargerScores();
             return scores.ContainsKey(niveau) ? scores[niveau] : 0;
         }
 
-        // 🔥 NOUVEAU
+        //PERMET DE RESETTER LES SCORES QUAND APPELÉ DE SELECTIONNIVEAU
         public static void ResetScores()
         {
             if (File.Exists(filePath))

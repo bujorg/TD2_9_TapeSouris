@@ -4,18 +4,16 @@ namespace TapeSouris
 {
     public partial class MainWindow : Window
     {
+        //INITIALISE LE WPF
         public MainWindow()
         {
             InitializeComponent();
         }
-
+        //QUAND LE BOUTON JEU EST CLIQUÉ, LANCE LA SÉLECTION DE NIVEAUX ET FERME LA FENÊTRE
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            // Ouvre la sélection des niveaux
             SelectionNiveaux selectionNiveaux = new SelectionNiveaux();
             selectionNiveaux.Show();
-
-            // Ferme le menu principal
             Close();
         }
     }
