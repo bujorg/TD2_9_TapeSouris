@@ -10,22 +10,9 @@
         <Viewbox Stretch="UniformToFill">
             <Grid Height="450" Width="800">
                 <Image Source="/images/sol.jpg" Stretch="Fill"/>
-                <TextBlock x:Name="scoreNiveau1"
-           Text="Meilleur score : 0"
-           HorizontalAlignment="Center"
-           Margin="0,170,200,0"
-           Foreground="White"/>
-
-                <TextBlock x:Name="scoreNiveau2"
-           Text="Meilleur score : 0"
-           HorizontalAlignment="Center"
-           Margin="0,170,0,0"
-           Foreground="White"/>
-                <TextBlock x:Name="scoreNiveau3"
-           Text="Meilleur score : 0"
-           HorizontalAlignment="Center"
-           Margin="200,170,0,0"
-           Foreground="White"/>
+                <TextBlock x:Name="scoreNiveau1" Text="Meilleur score : 0" HorizontalAlignment="Center" Margin="0,170,200,0" Foreground="White"/>
+                <TextBlock x:Name="scoreNiveau2" Text="Meilleur score : 0" HorizontalAlignment="Center" Margin="0,170,0,0" Foreground="White"/>
+                <TextBlock x:Name="scoreNiveau3" Text="Meilleur score : 0" HorizontalAlignment="Center" Margin="200,170,0,0" Foreground="White"/>
                 <TextBlock Text="se debloque après un score de 15 au niveau 1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" Width="95" Height="60" TextWrapping="Wrap" Foreground="White" TextAlignment="Center"/>
                 <TextBlock Text="se debloque après un score de 8 au niveau 2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,250,0,0" Width="90" Height="60" TextWrapping="Wrap" Foreground="White" TextAlignment="Center"/>
                 <Image Margin="0,200,200,0" Source="/images/SelectNivBut.png" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill" Width="80" Height="20"/>
@@ -54,4 +41,5 @@
             </Setter>
         </Style>
     </Window.Resources>
+    
 </Window>

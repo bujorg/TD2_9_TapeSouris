@@ -9,7 +9,6 @@
     <Grid Height="Auto" Width="Auto" >
         <Viewbox Stretch="UniformToFill">
             <Grid>
-
                 <Image Source="/images/sol.jpg" Stretch="Fill"/>
                 <TextBlock Text="Bienvenue à Souris Land !" FontSize="55" TextAlignment="Center" VerticalAlignment="Center" Foreground="Gold" Background="Transparent" Margin="0,0,0,300" FontFamily="Matura MT Script Capitals">
                     <TextBlock.Effect>
@@ -27,7 +26,5 @@
                 </Menu>
             </Grid>
         </Viewbox>
-        
     </Grid>
-    
 </Window>

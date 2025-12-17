@@ -15,35 +15,10 @@
         Icon="/images/souris.png">
 
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-
-        <TextBlock Text="Jeu en pause"
-                   FontSize="24"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   Margin="0,0,0,20"/>
-
-        <TextBlock Text="Volume"
-                   Foreground="White"
-                   HorizontalAlignment="Center"/>
-
-        <Slider x:Name="VolumeSlider"
-                Minimum="0"
-                Maximum="1"
-                Value="0.5"
-                Width="150"
-                Margin="0,0,0,20"
-                ValueChanged="VolumeSlider_ValueChanged"/>
-
-        <Button Name="ResumeButton"
-                Content="Reprendre"
-                Width="150"
-                Margin="0,0,0,10"
-                Click="ResumeButton_Click"/>
-
-        <Button Name="QuitButton"
-                Content="Quitter"
-                Width="150"
-                Click="QuitButton_Click"/>
-
+        <TextBlock Text="Jeu en pause" FontSize="24" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <TextBlock Text="Volume" Foreground="White" HorizontalAlignment="Center"/>
+        <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" Width="150" Margin="0,0,0,20" ValueChanged="VolumeSlider_ValueChanged"/>
+        <Button Name="ResumeButton" Content="Reprendre" Width="150" Margin="0,0,0,10" Click="ResumeButton_Click"/>
+        <Button Name="QuitButton" Content="Quitter" Width="150" Click="QuitButton_Click"/>
     </StackPanel>
 </Window>
