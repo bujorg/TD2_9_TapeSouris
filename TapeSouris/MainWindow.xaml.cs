@@ -10,7 +10,7 @@ namespace TapeSouris
             InitializeComponent();
         }
         //QUAND LE BOUTON JEU EST CLIQUÉ, LANCE LA SÉLECTION DE NIVEAUX ET FERME LA FENÊTRE
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void Start_Click(object sender, RoutedEventArgs e)
         {
             SelectionNiveaux selectionNiveaux = new SelectionNiveaux();
             selectionNiveaux.Show();

@@ -22,7 +22,7 @@
                 </TextBlock>
                 <Image Margin="0,170,0,0" Width="100" Height="50" Source="/images/bouton_play.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Menu Width="100" Height="50" Grid.Row="0" Margin="0,170,0,0" Background="Transparent" Panel.ZIndex="1">
-                    <MenuItem Header="" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="100" Height="50" FontSize="35" BorderThickness="0,0,0,0" Margin="0,0,0,0"/>
+                    <MenuItem Header="" Click="Start_Click" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Width="100" Height="50" FontSize="35" BorderThickness="0,0,0,0" Margin="0,0,0,0"/>
                 </Menu>
             </Grid>
         </Viewbox>

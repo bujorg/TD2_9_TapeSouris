@@ -22,9 +22,9 @@ namespace TapeSouris
         private DispatcherTimer minuterie;
         private bool jeuEnCours = true;
         private bool estEnPause = false;
-        private MediaPlayer player;
+        private MediaPlayer sonNiveau;
         private MediaPlayer sonTouche;
-        private double volumeJeu = 1;
+        private double volumeJeu = 0.5;
         private bool scoreSauvegarde = false;
 
         // FONCTION D'INITIALISATION. ELLE INITIALISE LA FENETRE, LE TEMPS ET LE NIVEAU
@@ -33,12 +33,12 @@ namespace TapeSouris
             InitializeComponent();
             tempsRestant = tempsNiveau;
             niveau = niveauChoisi;
-            Closing += Jeu_Closing;
-            Loaded += Jeu_Loaded;
+            Closing += FermetureJeu;
+            Loaded += JeuEnCour;
         }
 
         // DEBUT DU JEU. CETTE FONCTION MET LE BON BACKGROUND ET DEMARRE LE JEU
-        private void Jeu_Loaded(object sender, RoutedEventArgs e)
+        private void JeuEnCour(object sender, RoutedEventArgs e)
         {
             ChangerBackground();
             Demarrage();
@@ -64,7 +64,7 @@ namespace TapeSouris
             }
         }
         // SAUVEGARDE LORSQU'ON FERME LE JEU
-        private void Jeu_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void FermetureJeu(object sender, System.ComponentModel.CancelEventArgs e)
         {
             SauvegarderScoreUneFois();
         }
@@ -91,18 +91,18 @@ namespace TapeSouris
         //MET LA BONNE MUSIQUE SELON LE NIVEAU AU VOLUME SPECIFIE
         private void Musique()
         {
-            player = new MediaPlayer();
+            sonNiveau = new MediaPlayer();
             if (niveau == 1 || niveau == 2)
-                player.Open(new Uri("Musiques/MusiqueNiveau1.mp3", UriKind.Relative));
+                sonNiveau.Open(new Uri("Musiques/MusiqueNiveau1.mp3", UriKind.Relative));
             if (niveau == 3)
-                player.Open(new Uri("Musiques/MusiqueNiveau2.mp3", UriKind.Relative));
-            player.MediaEnded += (s, e) =>
+                sonNiveau.Open(new Uri("Musiques/MusiqueNiveau2.mp3", UriKind.Relative));
+            sonNiveau.MediaEnded += (s, e) =>
             {
-                player.Position = TimeSpan.Zero;
-                player.Play();
+                sonNiveau.Position = TimeSpan.Zero;
+                sonNiveau.Play();
             };
-            player.Volume = volumeJeu;
-            player.Play();
+            sonNiveau.Volume = volumeJeu;
+            sonNiveau.Play();
         }
 
         //DEMARRE LE JEU EN LANCANT L'ACTIVATION DES BOUTONS ET GERE L'ACTIVATION DU MENU PAUSE ET DU TYPE DE SOURIS AFFICHE
@@ -244,8 +244,8 @@ namespace TapeSouris
             };
             bool? result = pause.ShowDialog();
             volumeJeu = pause.Volume;
-            if (player != null)
-                player.Volume = volumeJeu;
+            if (sonNiveau != null)
+                sonNiveau.Volume = volumeJeu;
 
             if (result == true)
                 ReprendreJeu();
@@ -306,7 +306,7 @@ namespace TapeSouris
         {
             minuterie?.Stop();
             cts.Cancel();
-            player?.Stop();
+            sonNiveau?.Stop();
             SauvegarderScoreUneFois();
             if (retournerMenu)
             {
